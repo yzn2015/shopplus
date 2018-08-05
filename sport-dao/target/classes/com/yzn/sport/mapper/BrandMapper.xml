@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yzn.sport.mapper.BrandMapper" >
+  <cache type="com.yzn.sport.commons.RedisCache"/>
+  <resultMap id="BaseResultMap" type="com.yzn.sport.pojo.Brand" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="img_url" property="imgUrl" jdbcType="VARCHAR" />
+    <result column="web_site" property="webSite" jdbcType="VARCHAR" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="is_display" property="isDisplay" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, description, img_url, web_site, sort, is_display
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from bbs_brand
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectBrands" resultMap="BaseResultMap" parameterType="com.yzn.sport.pojo.Brand">
+    select 
+    <include refid="Base_Column_List" />
+    from bbs_brand
+    <where>
+        <if test="name!=null">
+            name like concat('%',#{name},'%')
+        </if>
+        <if test="isDisplay!=null">
+            and is_display = #{isDisplay}
+        </if>
+    </where>
+    order by sort desc
+    limit #{fromLine},#{size}
+   
+  </select>
+   <select id="selectAllBrand" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bbs_brand  
+  </select>
+  
+  <select id="selectBrandcount" resultType="int" parameterType="com.yzn.sport.pojo.Brand">
+    select 
+    count(id)
+    from bbs_brand 
+    <where>
+        <if test="name!=null">
+            name like concat('%',#{name},'%')
+        </if>
+        <if test="isDisplay!=null">
+            and is_display = #{isDisplay}
+        </if>
+    </where>
+  </select>
+  <update id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    update bbs_brand set is_display=0
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="deleteBrandsByIds" parameterType="java.lang.Long" >
+    update bbs_brand set is_display=0 where id in
+     <foreach open="(" close=")" separator="," collection="array" item="id">
+         #{id}
+     </foreach>
+  </update>
+  
+  
+  <insert id="insert" parameterType="com.yzn.sport.pojo.Brand" >
+    insert into bbs_brand (id, name, description, 
+      img_url, web_site, sort, 
+      is_display)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{imgUrl,jdbcType=VARCHAR}, #{webSite,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, 
+      #{isDisplay,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yzn.sport.pojo.Brand" >
+    insert into bbs_brand
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="imgUrl != null" >
+        img_url,
+      </if>
+      <if test="webSite != null" >
+        web_site,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="isDisplay != null" >
+        is_display,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="imgUrl != null" >
+        #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="webSite != null" >
+        #{webSite,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="isDisplay != null" >
+        #{isDisplay,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yzn.sport.pojo.Brand" >
+    update bbs_brand
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="imgUrl != null" >
+        img_url = #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="webSite != null" >
+        web_site = #{webSite,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="isDisplay != null" >
+        is_display = #{isDisplay,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yzn.sport.pojo.Brand" >
+    update bbs_brand
+    set name = #{name,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      img_url = #{imgUrl,jdbcType=VARCHAR},
+      web_site = #{webSite,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      is_display = #{isDisplay,jdbcType=BIT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

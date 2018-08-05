@@ -1,0 +1,4 @@
+com\yzn\sport\controller\IndexController.class
+com\yzn\sport\controller\BrandController.class
+com\yzn\sport\controller\ProductController.class
+com\yzn\sport\controller\SkuController.class

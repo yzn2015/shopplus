@@ -1,0 +1,7 @@
+com\yzn\sport\mapper\ProductMapper.class
+com\yzn\sport\mapper\OrderMapper.class
+com\yzn\sport\mapper\ColorMapper.class
+com\yzn\sport\mapper\BrandMapper.class
+com\yzn\sport\mapper\DetailMapper.class
+com\yzn\sport\mapper\SkuMapper.class
+com\yzn\sport\mapper\BuyerMapper.class

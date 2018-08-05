@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yzn.sport.mapper.ProductMapper" >
+  <resultMap id="BaseResultMap" type="com.yzn.sport.pojo.Product" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="brand_id" property="brandId" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="weight" property="weight" jdbcType="REAL" />
+    <result column="is_new" property="isNew" jdbcType="BIT" />
+    <result column="is_hot" property="isHot" jdbcType="BIT" />
+    <result column="is_commend" property="isCommend" jdbcType="BIT" />
+    <result column="is_show" property="isShow" jdbcType="BIT" />
+    <result column="is_del" property="isDel" jdbcType="BIT" />
+    <result column="colors" property="colors" jdbcType="VARCHAR" />
+    <result column="sizes" property="sizes" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="img_url" property="imgUrl" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="package_list" property="packageList" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, brand_id, name, weight, is_new, is_hot, is_commend, is_show, is_del, colors, 
+    sizes, create_time,img_url, description, package_list
+  </sql>
+ 
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from bbs_product
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectProducts" resultMap="BaseResultMap" parameterType="com.yzn.sport.pojo.Product" >
+    select 
+    <include refid="Base_Column_List" />
+    from bbs_product where is_del=1
+
+         <if test="name!=null">
+              and name like concat('%',#{name},'%')
+         </if>
+         <if test="brandId!=null">
+              and brand_id = #{brandId}
+         </if>
+         <if test="isShow!=null">
+              and is_show = #{isShow}
+         </if>
+         limit #{fromLine},#{size}
+
+  </select>
+   <select id="selectProductcount" resultType="int" parameterType="com.yzn.sport.pojo.Product" >
+    select 
+    count(id)
+    from bbs_product
+    <where>
+         <if test="name!=null">
+              name like concat('%',#{name},'%')
+         </if>
+         <if test="brandId!=null">
+              and brand_id = #{brandId}
+         </if>
+         <if test="isShow!=null">
+              and is_show = #{isShow}
+         </if>
+    </where>
+  </select>
+   <update id="deleteById" parameterType="java.lang.Long" >
+    update bbs_product
+    set is_del=0
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="deleteByIds" parameterType="java.lang.Long" >
+    update bbs_product
+    set is_del = 0
+    where id in
+    <foreach open="(" close=")" separator="," collection="array" item="id">
+         #{id}
+     </foreach>
+  </update>
+  <update id="groundingByIds" parameterType="java.lang.Long" >
+    update bbs_product
+    set is_show = 1
+    where id in
+    <foreach open="(" close=")" separator="," collection="array" item="id">
+         #{id}
+     </foreach>
+  </update>
+  <update id="undercarriageByIds" parameterType="java.lang.Long" >
+    update bbs_product
+    set is_show = 0
+    where id in
+    <foreach open="(" close=")" separator="," collection="array" item="id">
+         #{id}
+     </foreach>
+  </update>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from bbs_product
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yzn.sport.pojo.Product" >
+    insert into bbs_product (id, brand_id, name, 
+      weight, is_new, is_hot, is_commend, 
+      is_show, is_del, colors, sizes, 
+      create_time, img_url, description, 
+      package_list)
+    values (#{id,jdbcType=BIGINT}, #{brandId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
+      #{weight,jdbcType=REAL}, #{isNew,jdbcType=BIT}, #{isHot,jdbcType=BIT}, #{isCommend,jdbcType=BIT}, 
+      #{isShow,jdbcType=BIT}, #{isDel,jdbcType=BIT}, #{colors,jdbcType=VARCHAR}, #{sizes,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{imgUrl,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{packageList,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yzn.sport.pojo.Product" >
+    insert into bbs_product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="brandId != null" >
+        brand_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="weight != null" >
+        weight,
+      </if>
+      <if test="isNew != null" >
+        is_new,
+      </if>
+      <if test="isHot != null" >
+        is_hot,
+      </if>
+      <if test="isCommend != null" >
+        is_commend,
+      </if>
+      <if test="isShow != null" >
+        is_show,
+      </if>
+      <if test="isDel != null" >
+        is_del,
+      </if>
+      <if test="colors != null" >
+        colors,
+      </if>
+      <if test="sizes != null" >
+        sizes,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="imgUrl != null" >
+        img_url,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="packageList != null" >
+        package_list,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="brandId != null" >
+        #{brandId,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=REAL},
+      </if>
+      <if test="isNew != null" >
+        #{isNew,jdbcType=BIT},
+      </if>
+      <if test="isHot != null" >
+        #{isHot,jdbcType=BIT},
+      </if>
+      <if test="isCommend != null" >
+        #{isCommend,jdbcType=BIT},
+      </if>
+      <if test="isShow != null" >
+        #{isShow,jdbcType=BIT},
+      </if>
+      <if test="isDel != null" >
+        #{isDel,jdbcType=BIT},
+      </if>
+      <if test="colors != null" >
+        #{colors,jdbcType=VARCHAR},
+      </if>
+      <if test="sizes != null" >
+        #{sizes,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="imgUrl != null" >
+        #{imgUrl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="packageList != null" >
+        #{packageList,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yzn.sport.pojo.Product" >
+    update bbs_product
+    <set >
+      <if test="brandId != null" >
+        brand_id = #{brandId,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null" >
+        weight = #{weight,jdbcType=REAL},
+      </if>
+      <if test="isNew != null" >
+        is_new = #{isNew,jdbcType=BIT},
+      </if>
+      <if test="isHot != null" >
+        is_hot = #{isHot,jdbcType=BIT},
+      </if>
+      <if test="isCommend != null" >
+        is_commend = #{isCommend,jdbcType=BIT},
+      </if>
+      <if test="isShow != null" >
+        is_show = #{isShow,jdbcType=BIT},
+      </if>
+      <if test="isDel != null" >
+        is_del = #{isDel,jdbcType=BIT},
+      </if>
+      <if test="colors != null" >
+        colors = #{colors,jdbcType=VARCHAR},
+      </if>
+      <if test="sizes != null" >
+        sizes = #{sizes,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="imgUrl != null" >
+        img_url = #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="packageList != null" >
+        package_list = #{packageList,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yzn.sport.pojo.Product" >
+    update bbs_product
+    set brand_id = #{brandId,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
+      weight = #{weight,jdbcType=REAL},
+      is_new = #{isNew,jdbcType=BIT},
+      is_hot = #{isHot,jdbcType=BIT},
+      is_commend = #{isCommend,jdbcType=BIT},
+      is_show = #{isShow,jdbcType=BIT},
+      is_del = #{isDel,jdbcType=BIT},
+      colors = #{colors,jdbcType=VARCHAR},
+      sizes = #{sizes,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      img_url = #{imgUrl,jdbcType=LONGVARCHAR},
+      description = #{description,jdbcType=LONGVARCHAR},
+      package_list = #{packageList,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yzn.sport.pojo.Product" >
+    update bbs_product
+    set brand_id = #{brandId,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
+      weight = #{weight,jdbcType=REAL},
+      is_new = #{isNew,jdbcType=BIT},
+      is_hot = #{isHot,jdbcType=BIT},
+      is_commend = #{isCommend,jdbcType=BIT},
+      is_show = #{isShow,jdbcType=BIT},
+      is_del = #{isDel,jdbcType=BIT},
+      colors = #{colors,jdbcType=VARCHAR},
+      sizes = #{sizes,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
