@@ -114,7 +114,10 @@ function isShow0(){
 			<td align="center"><c:if test="${product1.isCommend ==1}">是</c:if><c:if test="${product1.isCommend ==0}">否</c:if></td>
 			<td align="center"><c:if test="${product1.isShow ==1}">上架</c:if><c:if test="${product1.isShow ==0}">下架</c:if></td>
 			<td align="center">
-			<a href="#" class="pn-opt">查看</a> | <a href="javascript:;" class="pn-opt" onclick="toUpdatePage(${product.id },${page.pageNo },${page.pageSize })">修改</a> | <a href="javascript:;" onclick="if(confirm('您确定删除吗？')) {window.location.href='deleteProduct.do?id=${product1.id}&pageNo=${pagination.pageNo }&name=${product.name }&isShow=${product.isShow==null?2:product.isShow }&brandId=${product.brandId==null?0:product.brandId }'}" class="pn-opt">删除</a> | <a href="javascript:;" onclick="window.location.href='skuList.do?productId=${product1.id }'" class="pn-opt">库存</a>
+			<a href="#" class="pn-opt">查看</a> |
+				<a href="javascript:;" class="pn-opt" onclick="toUpdatePage(${product.id },${pagination.pageNo },${pagination.pageSize })">
+					修改</a> | <a href="javascript:;" onclick="if(confirm('您确定删除吗？')) {window.location.href='deleteProduct.do?id=${product1.id}&pageNo=${pagination.pageNo }&name=${product.name }&isShow=${product.isShow==null?2:product.isShow }&brandId=${product.brandId==null?0:product.brandId }'}" class="pn-opt">
+				删除</a> | <a href="javascript:;" onclick="window.location.href='skuList.do?productId=${product1.id }'" class="pn-opt">库存</a>
 			</td> 
 		</tr>
 		</c:forEach>

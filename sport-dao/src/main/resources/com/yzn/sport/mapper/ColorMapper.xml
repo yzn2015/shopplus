@@ -10,16 +10,16 @@
   <sql id="Base_Column_List" >
     id, name, parent_id, img_url
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
-    select 
-    <include refid="Base_Column_List" />
-    from bbs_color
-    where id = #{id,jdbcType=BIGINT}
-  </select>
   <select id="selectAllColor" resultMap="BaseResultMap"  >
     select 
     <include refid="Base_Column_List" />
     from bbs_color
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from bbs_color
+    where id=#{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from bbs_color

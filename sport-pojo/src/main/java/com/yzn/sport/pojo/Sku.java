@@ -106,4 +106,20 @@ public class Sku implements Serializable{
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
+
+    @Override
+    public String toString() {
+        return "Sku{" +
+                "id=" + id +
+                ", productId=" + productId +
+                ", colorId=" + colorId +
+                ", size='" + size + '\'' +
+                ", marketPrice=" + marketPrice +
+                ", price=" + price +
+                ", deliveFee=" + deliveFee +
+                ", stock=" + stock +
+                ", upperLimit=" + upperLimit +
+                ", createTime=" + createTime +
+                '}';
+    }
 }

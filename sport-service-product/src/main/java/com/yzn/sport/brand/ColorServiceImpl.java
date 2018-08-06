@@ -21,4 +21,11 @@ public class ColorServiceImpl implements ColorService {
 
         return colorMapper.selectAllColor();
     }
+
+    @Override
+    public Color selectByPrimaryKey(Long id) {
+        return colorMapper.selectByPrimaryKey(id);
+    }
+
+
 }

@@ -7,4 +7,6 @@ import com.yzn.sport.pojo.Color;
 public interface ColorService {
 
 	public List<Color> selectAllColor();
+
+	Color selectByPrimaryKey(Long id);
 }

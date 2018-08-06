@@ -38,7 +38,7 @@ public class ProductController {
         model.addAttribute("pagination", productService.selectProducts(product));
         model.addAttribute("blist", brandService.selectAllBrand());
         model.addAttribute("product", product);
-//        System.out.println(product);
+        System.out.println(product);
         return "product/list";
     }
 
@@ -87,10 +87,13 @@ public class ProductController {
     //上传多张图片
     @ResponseBody
     @RequestMapping("productLoad.do")
-    public List<String> productLoad(@RequestParam(required = false) MultipartFile[] pics, HttpSession session) {
+    public String productLoad(@RequestParam(required = false) MultipartFile[] pics, HttpSession session) {
         String path = session.getServletContext().getRealPath("upload");
-        List<String> list = new ArrayList<String>();
+//        List<String> list = new ArrayList<String>();
+        StringBuilder ss = new StringBuilder();
+        int cnt =0;
         for (MultipartFile pic : pics) {
+            System.out.println(pic.getOriginalFilename());
             try {
                 pic.transferTo(new File(path + File.separator + pic.getOriginalFilename()));
             } catch (IllegalStateException e) {
@@ -98,9 +101,14 @@ public class ProductController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            list.add("http://localhost:8081/upload/" + pic.getOriginalFilename());
+            if(cnt != 0) {
+                ss.append(",");
+            }
+            cnt++;
+            ss.append("http://localhost:8081/upload/" + pic.getOriginalFilename());
         }
-        return list;
+        System.out.println(ss);
+        return ss.toString();
     }
 
     //添加
