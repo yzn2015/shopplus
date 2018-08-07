@@ -5,10 +5,18 @@ import com.yzn.sport.commons.StringUtils;
 import com.yzn.sport.mapper.ProductMapper;
 import com.yzn.sport.pojo.Product;
 import com.yzn.sport.product.ProductService;
+import org.apache.solr.client.solrj.SolrServerException;
+import org.apache.solr.client.solrj.impl.HttpSolrServer;
+import org.apache.solr.common.SolrInputDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @Author: YangZaining
@@ -39,8 +47,10 @@ public class ProductServiceImpl implements ProductService {
         }
         record.setFromLine((record.getPageNo() - 1) * record.getSize());
         List<Product> plist = productMapper.selectProducts(record);
-        for (Product product : plist) {
-            product.setImgUrls(product.getImgUrl().split(","));
+        if(plist!=null) {
+            for (Product product : plist) {
+                product.setImgUrls(product.getImgUrl().split(","));
+            }
         }
         Pagination pagination = new Pagination(record.getPageNo(), record.getSize(), productMapper.selectProductcount(record), plist);
         StringBuilder params = new StringBuilder();
@@ -72,9 +82,24 @@ public class ProductServiceImpl implements ProductService {
         productMapper.deleteByIds(ids);
     }
 
+    @Resource
+    private HttpSolrServer solrServer;
 
     public void groundingByIds(Long[] ids) {
         productMapper.groundingByIds(ids);
+        //向solr中存入数据
+        SolrInputDocument sid = new SolrInputDocument();
+//        for(Long id :ids){
+            sid.addField("id",100);
+//        }
+        try {
+            solrServer.add(sid);
+            solrServer.commit();
+        } catch (SolrServerException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -89,6 +114,19 @@ public class ProductServiceImpl implements ProductService {
         record.setSizes(StringUtils.arrayToString(record.getSizess()));
         record.setIsDel(1);
         record.setIsShow(0);
+        if(record.getIsCommend()==null) {
+            record.setIsCommend(0);
+        }
+        if(record.getIsHot()==null){
+            record.setIsHot(0);
+        }
+        if(record.getIsNew()==null){
+            record.setIsNew(0);
+        }
+        record.setCreateTime(new java.util.Date());
+        System.out.println("wqeeqwewqewq");
+        System.out.println(record);
+        System.out.println("aaaaaaaaaaa");
         productMapper.insertSelective(record);
 
     }

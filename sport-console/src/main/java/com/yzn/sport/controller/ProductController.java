@@ -6,10 +6,12 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.locks.ReentrantLock;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
-
 import com.yzn.sport.color.ColorService;
 import com.yzn.sport.pojo.Product;
 import com.yzn.sport.product.ProductService;
@@ -38,7 +40,7 @@ public class ProductController {
         model.addAttribute("pagination", productService.selectProducts(product));
         model.addAttribute("blist", brandService.selectAllBrand());
         model.addAttribute("product", product);
-        System.out.println(product);
+//        System.out.println(product);
         return "product/list";
     }
 
@@ -87,10 +89,10 @@ public class ProductController {
     //上传多张图片
     @ResponseBody
     @RequestMapping("productLoad.do")
-    public String productLoad(@RequestParam(required = false) MultipartFile[] pics, HttpSession session) {
+    public List<String> productLoad(@RequestParam(required = false) MultipartFile[] pics, HttpSession session) {
         String path = session.getServletContext().getRealPath("upload");
-//        List<String> list = new ArrayList<String>();
-        StringBuilder ss = new StringBuilder();
+        List<String> list = new ArrayList<String>();
+//        StringBuilder ss = new StringBuilder();
         int cnt =0;
         for (MultipartFile pic : pics) {
             System.out.println(pic.getOriginalFilename());
@@ -101,14 +103,15 @@ public class ProductController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            if(cnt != 0) {
-                ss.append(",");
-            }
-            cnt++;
-            ss.append("http://localhost:8081/upload/" + pic.getOriginalFilename());
+//            if(cnt != 0) {
+//                ss.append(",");
+//            }
+//            cnt++;
+//            ss.append("http://localhost:8080/upload/" + pic.getOriginalFilename());
+            list.add("http://localhost:8080/upload/" + pic.getOriginalFilename());
         }
-        System.out.println(ss);
-        return ss.toString();
+        System.out.println(list);
+        return list;
     }
 
     //添加

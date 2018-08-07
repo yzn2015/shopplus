@@ -7,6 +7,7 @@
     <script>
         function upload() {
             $('#jvForm').attr("action", "upload.do").ajaxSubmit(function (data) {
+                console.log(data);
                 $('#allUrl').attr("src", data);
                 $('#imgUrl').val(data);
                 $('#jvForm').attr("action","addBrand.do");
