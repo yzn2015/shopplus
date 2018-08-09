@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="solrservice" />
+        <module name="sport-commons" />
+        <module name="sport-console" />
+        <module name="sport-dao" />
+        <module name="sport-interface" />
+        <module name="sport-pojo" />
+        <module name="sport-portal" />
+        <module name="sport-service-product" />
+        <module name="sportcommons" />
+        <module name="sportconsole" />
+        <module name="sportdao" />
+        <module name="sportfont" />
+        <module name="sportinterface" />
+        <module name="sportpojo" />
+        <module name="sportportal" />
+        <module name="sportserviceproduct" />
+        <module name="sportsolr" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="shopcommons" target="1.5" />
+      <module name="shopdao" target="1.5" />
+      <module name="shopinterface" target="1.5" />
+      <module name="shoppjo" target="1.5" />
+      <module name="sport-portal" target="1.8" />
+      <module name="sportportal" target="1.8" />
+      <module name="sportsolr" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

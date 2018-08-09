@@ -1,11 +1,24 @@
 package com.yzn.sport.commons;
 
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+
 /**
  * @Author: YangZaining
  * @Date: Created in 15:35$ 2018/8/7$
  */
 public class Test {
     public static void main(String[] args) {
-        System.out.println(0x7fffffff);
+        LinkedHashMap<Integer, Integer> map = new LinkedHashMap<Integer, Integer>(20, 0.75f, true);
+        for (int i = 0; i < 10; i++) {//按顺序放入1~9
+            map.put(i, i);
+        }
+        System.out.println("原数据："+map.toString());
+        map.get(3);
+        System.out.println("查询存在的某一个："+map.toString());
+        map.put(4, 4);
+        System.out.println("插入已存在的某一个："+map.toString()); //直接调用已存在的toString方法，不然自己需要用迭代器实现
+        map.put(10, 10);
+        System.out.println("插入一个原本没存在的："+map.toString());
     }
 }

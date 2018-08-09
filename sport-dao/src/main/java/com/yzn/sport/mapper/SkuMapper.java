@@ -18,4 +18,6 @@ public interface SkuMapper {
     int updateByPrimaryKey(Sku record);
     
     List<Sku> selectByProductId(Long productId);
+
+    Float selectMinPriceByProductId(Long productId);
 }

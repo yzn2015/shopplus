@@ -24,8 +24,14 @@
     where id = #{id,jdbcType=BIGINT}
   </select>
   <select id="selectByProductId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
-    select 
+    select
     <include refid="Base_Column_List" />
+    from bbs_sku
+    where product_id = #{productId,jdbcType=BIGINT}
+  </select>
+  <select id="selectMinPriceByProductId" resultType="java.lang.Float" parameterType="java.lang.Long" >
+    select
+    min(market_price)
     from bbs_sku
     where product_id = #{productId,jdbcType=BIGINT}
   </select>

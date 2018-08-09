@@ -5,7 +5,7 @@
 <script type="text/javascript">
 //搜索
 function serachKeyword(){
-	window.location.href = "/productList?keyword=" + $("#keyword").val();
+	window.location.href = "/Search?keyword=" + $("#keyword").val();
 }
 </script>
 <!--shortcut start-->

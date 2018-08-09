@@ -21,7 +21,7 @@
 		http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 		
 	<!-- 扫描 @Contr -->	
-	<context:component-scan base-package="com.yzn.font" />
+	<context:component-scan base-package="com.yzn.font.controller" />
 	<!-- 处理器 映射器  适配器 -->
 	<mvc:annotation-driven/>
 	<!-- 视图解释器 jsp -->
@@ -31,7 +31,7 @@
 	</bean>
 	<!-- 处理静态资源文件 -->
 	<mvc:default-servlet-handler/>
-	<!-- <import resource="dubbo-consumer.xml"/>  -->
+	 <import resource="dubbo-consumer.xml"/>
 	
 	
 </beans>

@@ -2,3 +2,4 @@ com\yzn\sport\brand\BrandService.class
 com\yzn\sport\sku\SkuService.class
 com\yzn\sport\product\ProductService.class
 com\yzn\sport\color\ColorService.class
+com\yzn\sport\solr\ProductSolrService.class

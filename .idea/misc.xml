@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="FUSUsageTrigger">
+    <session id="-1225261181">
+      <usages-collector id="statistics.spring.core.usages.trigger">
+        <counts>
+          <entry key="fixes.SpringFacetInspection.AddFacetFix" value="3" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/solr-service" />
+    <file type="web" url="file://$PROJECT_DIR$/sport-console" />
+    <file type="web" url="file://$PROJECT_DIR$/sport-font" />
+    <file type="web" url="file://$PROJECT_DIR$/sport-portal" />
+    <file type="web" url="file://$PROJECT_DIR$/sport-service-product" />
+    <file type="web" url="file://$PROJECT_DIR$/sport-solr" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+      </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/shop-commons/pom.xml" />
+        <option value="$PROJECT_DIR$/shop-dao/pom.xml" />
+        <option value="$PROJECT_DIR$/shop-interface/pom.xml" />
+        <option value="$PROJECT_DIR$/shop-pjo/pom.xml" />
+        <option value="$PROJECT_DIR$/sport-portal/pom.xml" />
+        <option value="$PROJECT_DIR$/sport-solr/pom.xml" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

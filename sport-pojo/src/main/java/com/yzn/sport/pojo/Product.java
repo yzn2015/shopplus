@@ -42,14 +42,22 @@ public class Product implements Serializable{
     private String[] colorss;
     
     private String[] sizess;
-    
+
+    private Float price;
     //分页
     private Integer size;
     private Integer fromLine;
     private Integer pageNo;
-    
 
-    public Integer getPageNo() {
+	public Float getPrice() {
+		return price;
+	}
+
+	public void setPrice(Float price) {
+		this.price = price;
+	}
+
+	public Integer getPageNo() {
 		return pageNo;
 	}
 
