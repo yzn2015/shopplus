@@ -84,24 +84,24 @@ function trueBuy(){
 								</div>
 								<div class="cell p-goods">
 									<div class="p-img">
-										<a href="javascript:;" target="_blank"> <img
+										 <a href="javascript:;" target="_blank"> <img
 											src="${item.product.imgUrls[0]}"
-											alt="${item.product.name}" width="52" height="52"></a>
+											alt="${item.product.name}" width="52" height="52"></a> 
 									</div>
 									<div class="p-name">
-										<a href="javascrip:;"> ${item.product.name}--
-											${item.sku.color.name }-- ${item.sku.size } </a>
+										<a href="javascrip:;">  ${item.product.name} --
+						 ${item.sku.color.name }-- ${item.sku.size }  </a>
 									</div>
 								</div>
 								<div class="cell p-price">
-									<span class="price"> ¥${item.sku.price} </span>
+									<span class="price"> ¥${item.sku.marketPrice} </span>
 								</div>
 								<div class="cell p-promotion"></div>
 								<div class="cell p-inventory stock-11345721">有货</div>
 								<div class="cell p-quantity" for-stock="for-stock-11345721">
 									<div class="quantity-form">
 										<a href="javascript:void(0);" class="decrement">-</a> <input
-											value="${item.count }" type="text" class="quantity-text">
+											value="${item.amount }" type="text" class="quantity-text">
 											<a href="javascript:void(0);" class="increment">+</a>
 									</div>
 								</div>

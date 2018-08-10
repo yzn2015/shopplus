@@ -268,11 +268,11 @@ function login(){
 			</div>
 <div id="J_goodsList" class="goods-list-v1 gl-type-1 J-goods-list">
 	<ul class="gl-warp clearfix" data-tpl="1">
-		<c:forEach items="${pagination.list}" var="product">
+		<c:forEach items="${pagination.list }" var="product">
 		<li data-sku="1711416562" class="gl-item">
 			<div class="gl-i-wrap">
 				<div class="p-img">
-					<a href="javascript:;" onclick="window.open('http://localhost:8081/html/${product.id}.html')" style="position: relative;">
+					<a href="javascript:;" onclick="window.open('http://localhost:8080/html/${product.id}.html')" style="position: relative;">
 						<img width="220" height="220" class="err-product"  src="${product.imgUrl}">
 						<div id="gwd_float_curve_trigger" class="gwd_float_curve_trigger gwd_float_curve_up" style="left: 70px; top: 180px;">
 							<div class="gwd_float_curve_wrapper">
@@ -295,7 +295,7 @@ function login(){
 					</div>
 				</div>
 				<div class="p-name p-name-type-2">
-					<a target="_blank" title="满129立减10,199减20优惠券,支持货到付款" href="javascript:;" onclick="window.open('http://localhost:8081/html/${product.id}.html')">
+					<a target="_blank" title="满129立减10,199减20优惠券,支持货到付款" href="javascript:;" onclick="window.open('http://localhost:8080/html/${product.id}.html')">
 						<em>${product.name }</em>
 					</a>
 				</div>

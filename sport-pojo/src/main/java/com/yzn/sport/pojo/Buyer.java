@@ -1,8 +1,9 @@
 package com.yzn.sport.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Buyer {
+public class Buyer implements Serializable {
     private Long id;
 
     private String username;

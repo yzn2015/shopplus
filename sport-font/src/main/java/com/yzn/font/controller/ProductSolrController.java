@@ -1,7 +1,6 @@
 package com.yzn.font.controller;
 
-import com.yzn.sport.solr.ProductSolrService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.yzn.sport.login.ProductSolrService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

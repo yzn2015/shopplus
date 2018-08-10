@@ -7,30 +7,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.annotation.Resource;
-import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.Session;
-
 import cn.itcast.common.page.Pagination;
 import com.yzn.sport.product.ProductService;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrServer;
 import org.apache.solr.common.SolrInputDocument;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jms.core.JmsTemplate;
-import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Service;
-
 import com.yzn.sport.commons.StringUtils;
-import com.yzn.sport.mapper.BrandMapper;
 import com.yzn.sport.mapper.ColorMapper;
 import com.yzn.sport.mapper.ProductMapper;
 import com.yzn.sport.mapper.SkuMapper;
 import com.yzn.sport.pojo.Color;
 import com.yzn.sport.pojo.Product;
 import com.yzn.sport.pojo.Sku;
-import com.yzn.sport.brand.StaticPageServiceImpl;
 
 /**
  * @Author: YangZaining
@@ -189,6 +179,9 @@ public class ProductServiceImpl implements ProductService {
             }
 
         }
+    }
+    public Product selectByPrimaryKey(Long id) {
+        return productMapper.selectByPrimaryKey(id);
     }
 
 }

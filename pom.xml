@@ -18,6 +18,8 @@
         <module>sport-font</module>
         <module>solr-service</module>
         <module>sport-service-card</module>
+        <module>sport-login</module>
+        <module>sport-lg-service</module>
     </modules>
     <properties>
         <!--<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->

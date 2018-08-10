@@ -1,8 +1,9 @@
+<%@page import="com.oracle.sport.commons.RequestUtils"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <script type="text/javascript">
 function login(){
 	
-	window.location.href = "http://localhost:8081/toLogin.aspx?ReturnUrl="+encodeURIComponent(window.location.href);
+	window.location.href = "http://localhost:8086/index.aspx?ReturnUrl="+encodeURIComponent(window.location.href);
 }
 
 
@@ -18,11 +19,30 @@ function login(){
 			<li class="fore1" id="loginbar" clstag="homepage|keycount|home2013|01b">
 				您好！欢迎来到新巴巴运动网！
 				
+			    		   <%
+				       Cookie[] cs = request.getCookies();
+				       boolean b = false;
+				       for(Cookie c:cs){
+				    	   if(c.getName().equals(RequestUtils.getCSESSIONID(request, response))){
+				    		   b = true;
+				    		   break;
+				    		   
+				    	   }
+				    		   
+				    	  
+				       }
+				       if(b){
+				    	   %>
 			    		   <a href="javascript:;" onclick="logout()">[退出]</a>
 			               <a href="javascript:;" onclick="myOrder()" >[我的订单]</a>
-			    		  
+			    		   <%  
+				       }else{
+				    	   %>
 			    		   	<a href="javascript:;" onclick="login()">[登录]</a>&nbsp;
 		                	<a href="javascript:;" onclick="regist()">[免费注册]</a>
+			    		   <% 
+				       }
+				%>
 			    		   
 	
 				

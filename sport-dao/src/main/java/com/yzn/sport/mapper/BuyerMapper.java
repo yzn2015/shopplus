@@ -3,6 +3,7 @@ package com.yzn.sport.mapper;
 import com.yzn.sport.pojo.Buyer;
 
 public interface BuyerMapper {
+
     int deleteByPrimaryKey(Long id);
 
     int insert(Buyer record);
@@ -14,4 +15,6 @@ public interface BuyerMapper {
     int updateByPrimaryKeySelective(Buyer record);
 
     int updateByPrimaryKey(Buyer record);
+
+    Buyer selectByUsername(String username);
 }

@@ -29,7 +29,10 @@
     <dubbo:registry address="N/A" check="false"/>
     <!-- 4： 调用此接口对应的实现类  单位毫秒-->
     <dubbo:reference interface="com.yzn.sport.solr.ProductSolrService" id="productSolrService" url="dubbo://127.0.0.1:20881"/>
-
+    <dubbo:reference url="dubbo://127.0.0.1:20880" id="skuService" interface="com.yzn.sport.sku.SkuService"/>
+    <dubbo:reference url="dubbo://127.0.0.1:20880" id="productService" interface="com.yzn.sport.product.ProductService"/>
+    <dubbo:reference url="dubbo://127.0.0.1:20880" id="colorService" interface="com.yzn.sport.color.ColorService"/>
+    <dubbo:reference url="dubbo://127.0.0.1:20882" id="cartService" interface="com.yzn.sport.cart.CartService"/>
     <!-- 全局设置 -->
     <dubbo:consumer timeout="600000" check="false"/>
 

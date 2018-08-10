@@ -29,5 +29,5 @@
 	<!-- 3：dubbo://192.168.39.80:20880  默认  设置提供服务的端口号 -->
 	<dubbo:protocol port="20881" name="dubbo"/>
 	<!-- 4： 暴露实现类-->
-	 <dubbo:service interface="com.yzn.sport.solr.ProductSolrService" ref="productSolrService"/>
+	 <dubbo:service interface="com.yzn.sport.login.ProductSolrService" ref="productSolrService"/>
 </beans>

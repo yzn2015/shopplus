@@ -463,7 +463,7 @@ function sizeToRed(target,id){
   function addCart(){
 	//获取购物车信息，发送给后台
 	var buyNum = $('#buy-num').val();
-	window.location.href="http://localhost:8082/addCart?sid="+skuId+"&buyNum="+buyNum+"&url="+window.location.href;
+	window.location.href="http://localhost:8085/addCart?sid="+skuId+"&buyNum="+buyNum+"&url="+window.location.href;
 } 
 </script>
 </head>
@@ -583,7 +583,7 @@ function serachKeyword(){
 					<span class="shopping">
 						<span id="shopping-amount">3</span>
 					</span>
-					<a href="/cart/cart.html" id="settleup-url">去购物车结算</a>
+					<a href="http://localhost:8085/toCart" id="settleup-url">去购物车结算</a>
 				</dt>
 <!-- 				<dd>
 					<div class="prompt">
@@ -795,19 +795,19 @@ function serachKeyword(){
 			<div id="choose-color" class="li choose-color-shouji p-choose">
 				<div class="dt">选择颜色：</div>
 				<div class="dd" id="colors">
-					<div class="item" onclick="colorToRed(this,'26')">
-						<b></b>
-						<a href="javascript:;" title="夕阳红" >
-						<img data-img="1"
-							src="/images/53f44cc2N0b714cb2_002.jpg"
-							alt="灰色三件套" height="25" width="25"><i>夕阳红</i></a>
-					</div>
 					<div class="item" onclick="colorToRed(this,'22')">
 						<b></b>
 						<a href="javascript:;" title="桃粉" >
 						<img data-img="1"
 							src="/images/53f44cc2N0b714cb2_002.jpg"
 							alt="灰色三件套" height="25" width="25"><i>桃粉</i></a>
+					</div>
+					<div class="item" onclick="colorToRed(this,'26')">
+						<b></b>
+						<a href="javascript:;" title="夕阳红" >
+						<img data-img="1"
+							src="/images/53f44cc2N0b714cb2_002.jpg"
+							alt="灰色三件套" height="25" width="25"><i>夕阳红</i></a>
 					</div>
 					<div class="item" onclick="colorToRed(this,'9')">
 						<b></b>
@@ -823,6 +823,27 @@ function serachKeyword(){
 							src="/images/53f44cc2N0b714cb2_002.jpg"
 							alt="灰色三件套" height="25" width="25"><i>桃粉</i></a>
 					</div>
+					<div class="item" onclick="colorToRed(this,'26')">
+						<b></b>
+						<a href="javascript:;" title="夕阳红" >
+						<img data-img="1"
+							src="/images/53f44cc2N0b714cb2_002.jpg"
+							alt="灰色三件套" height="25" width="25"><i>夕阳红</i></a>
+					</div>
+					<div class="item" onclick="colorToRed(this,'9')">
+						<b></b>
+						<a href="javascript:;" title="西瓜红" >
+						<img data-img="1"
+							src="/images/53f44cc2N0b714cb2_002.jpg"
+							alt="灰色三件套" height="25" width="25"><i>西瓜红</i></a>
+					</div>
+					<div class="item" onclick="colorToRed(this,'9')">
+						<b></b>
+						<a href="javascript:;" title="西瓜红" >
+						<img data-img="1"
+							src="/images/53f44cc2N0b714cb2_002.jpg"
+							alt="灰色三件套" height="25" width="25"><i>西瓜红</i></a>
+					</div>
 					<div class="item" onclick="colorToRed(this,'22')">
 						<b></b>
 						<a href="javascript:;" title="桃粉" >
@@ -851,13 +872,6 @@ function serachKeyword(){
 							src="/images/53f44cc2N0b714cb2_002.jpg"
 							alt="灰色三件套" height="25" width="25"><i>夕阳红</i></a>
 					</div>
-					<div class="item" onclick="colorToRed(this,'26')">
-						<b></b>
-						<a href="javascript:;" title="夕阳红" >
-						<img data-img="1"
-							src="/images/53f44cc2N0b714cb2_002.jpg"
-							alt="灰色三件套" height="25" width="25"><i>夕阳红</i></a>
-					</div>
 					<div class="item" onclick="colorToRed(this,'9')">
 						<b></b>
 						<a href="javascript:;" title="西瓜红" >
@@ -865,12 +879,12 @@ function serachKeyword(){
 							src="/images/53f44cc2N0b714cb2_002.jpg"
 							alt="灰色三件套" height="25" width="25"><i>西瓜红</i></a>
 					</div>
-					<div class="item" onclick="colorToRed(this,'26')">
+					<div class="item" onclick="colorToRed(this,'9')">
 						<b></b>
-						<a href="javascript:;" title="夕阳红" >
+						<a href="javascript:;" title="西瓜红" >
 						<img data-img="1"
 							src="/images/53f44cc2N0b714cb2_002.jpg"
-							alt="灰色三件套" height="25" width="25"><i>夕阳红</i></a>
+							alt="灰色三件套" height="25" width="25"><i>西瓜红</i></a>
 					</div>
 					<div class="item" onclick="colorToRed(this,'22')">
 						<b></b>
@@ -879,26 +893,12 @@ function serachKeyword(){
 							src="/images/53f44cc2N0b714cb2_002.jpg"
 							alt="灰色三件套" height="25" width="25"><i>桃粉</i></a>
 					</div>
-					<div class="item" onclick="colorToRed(this,'9')">
+					<div class="item" onclick="colorToRed(this,'26')">
 						<b></b>
-						<a href="javascript:;" title="西瓜红" >
+						<a href="javascript:;" title="夕阳红" >
 						<img data-img="1"
 							src="/images/53f44cc2N0b714cb2_002.jpg"
-							alt="灰色三件套" height="25" width="25"><i>西瓜红</i></a>
-					</div>
-					<div class="item" onclick="colorToRed(this,'9')">
-						<b></b>
-						<a href="javascript:;" title="西瓜红" >
-						<img data-img="1"
-							src="/images/53f44cc2N0b714cb2_002.jpg"
-							alt="灰色三件套" height="25" width="25"><i>西瓜红</i></a>
-					</div>
-					<div class="item" onclick="colorToRed(this,'9')">
-						<b></b>
-						<a href="javascript:;" title="西瓜红" >
-						<img data-img="1"
-							src="/images/53f44cc2N0b714cb2_002.jpg"
-							alt="灰色三件套" height="25" width="25"><i>西瓜红</i></a>
+							alt="灰色三件套" height="25" width="25"><i>夕阳红</i></a>
 					</div>
 				</div>
 			</div>
